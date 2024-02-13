@@ -1,3 +1,5 @@
+from django.urls import include, path
+
 """
 URL configuration for snacks_project project.
 
@@ -15,8 +17,13 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include  # Remember to import 'include'
+from snacks.views import HomePageView, AboutPageView  # Corrected import statement
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include('snacks.urls')),  # Assuming 'snacks.urls' is correctly set up
+    path('about/', AboutPageView.as_view(), name='about'),
 ]
+
+
